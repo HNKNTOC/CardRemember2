@@ -32,8 +32,14 @@ public class ViewMenu implements View {
     public void show() {
         Container contentPane = frame.getContentPane();
         contentPane.add(createMenuItemsPanel(), BorderLayout.CENTER);
-        contentPane.add(createLabelPanel(), BorderLayout.NORTH);
+        contentPane.add(createLabel(), BorderLayout.NORTH);
         showFrame(frame);
+    }
+
+    private JLabel createLabel() {
+        JLabel label = new JLabel(this.label);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        return label;
     }
 
     public void addMenuItem(Menu.MenuItem menuItem) {
@@ -46,13 +52,6 @@ public class ViewMenu implements View {
 
     public void removeMenuItem() {
         mapMenuItems.clear();
-    }
-
-    private JPanel createLabelPanel() {
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel(this.label);
-        panel.add(label);
-        return panel;
     }
 
     /**
@@ -99,6 +98,7 @@ public class ViewMenu implements View {
             for (ActionListener listener : listeners) {
                 menuItem.addActionListener(listener);
             }
+            menuItem.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.add(menuItem);
         }
     }
