@@ -66,4 +66,11 @@ public class MenuTest {
         assertEquals(menu.getItemMenuListen(0).get(0), listener0);
         assertEquals(menu.getItemMenuListen(1).get(0), listener1);
     }
+
+    @Test
+    public void checkGetAllItemMenu() throws Exception {
+        addItemMenu();
+
+        menu.getAllMenuItem();
+    }
 }

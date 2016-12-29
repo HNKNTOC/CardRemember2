@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Menu use for select next View.
+ * Use for select next {@link com.caredRemember2.view.View}.
  */
 public class Menu implements Model {
     private static final Logger LOGGER = LogManager.getLogger(Menu.class);
@@ -51,12 +51,16 @@ public class Menu implements Model {
         return names;
     }
 
+    public List<MenuItem> getAllMenuItem() {
+        return new ArrayList<>(menuItems);
+    }
 
-    private class MenuItem {
+
+    public class MenuItem {
         private String name;
         private List<MenuItemListener> listeners = new ArrayList<>();
 
-        public MenuItem(String menuItemName) {
+        private MenuItem(String menuItemName) {
             this.name = menuItemName;
         }
 
@@ -68,7 +72,7 @@ public class Menu implements Model {
             return listeners;
         }
 
-        public void addListener(MenuItemListener listener) {
+        private void addListener(MenuItemListener listener) {
             this.listeners.add(listener);
         }
     }
