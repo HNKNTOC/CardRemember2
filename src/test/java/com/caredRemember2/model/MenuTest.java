@@ -39,14 +39,14 @@ public class MenuTest {
     public void checkNameItem() throws Exception {
         addItemMenu();
 
-        assertEquals(menu.getItemMenuName(0), MENU_ITEM_1);
-        assertEquals(menu.getItemMenuName(1), MENU_ITEM_2);
-        assertEquals(menu.getItemMenuName(2), MENU_ITEM_3);
+        assertEquals(menu.getMenuItemName(0), MENU_ITEM_1);
+        assertEquals(menu.getMenuItemName(1), MENU_ITEM_2);
+        assertEquals(menu.getMenuItemName(2), MENU_ITEM_3);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void whenGetMenuNameItemIfIndexIsOutOfRange() throws Exception {
-        menu.getItemMenuName(0);
+        menu.getMenuItemName(0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)

@@ -31,7 +31,7 @@ public class Menu implements Model {
         return menuItems.size();
     }
 
-    public String getItemMenuName(int indexItemMenu) {
+    public String getMenuItemName(int indexItemMenu) {
         return menuItems.get(indexItemMenu).getName();
     }
 
@@ -53,6 +53,10 @@ public class Menu implements Model {
 
     public List<MenuItem> getAllMenuItem() {
         return new ArrayList<>(menuItems);
+    }
+
+    public MenuItem getMenuItem(int index) {
+        return menuItems.get(index);
     }
 
 

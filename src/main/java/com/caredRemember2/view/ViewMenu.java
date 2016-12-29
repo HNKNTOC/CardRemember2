@@ -94,7 +94,7 @@ public class ViewMenu implements View<Menu> {
         }
 
         @Override
-        public String getItemMenuName(int indexItemMenu) {
+        public String getMenuItemName(int indexItemMenu) {
             throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
         }
 
