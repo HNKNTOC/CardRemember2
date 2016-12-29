@@ -1,5 +1,6 @@
 package com.caredRemember2;
 
+import com.caredRemember2.controller.ControllerMenu;
 import com.caredRemember2.model.Menu;
 import com.caredRemember2.view.ViewMenu;
 
@@ -8,13 +9,16 @@ import java.awt.event.ActionEvent;
 
 public class Main {
     public static void main(String[] args) {
-        ViewMenu viewMenu = new ViewMenu();
         Menu menu = new Menu();
         addMenuItem(menu, 0);
         addMenuItem(menu, 1);
         addMenuItem(menu, 2);
-        viewMenu.setModel(menu);
-        viewMenu.show();
+
+        ControllerMenu controller = new ControllerMenu();
+        controller.setModel(menu);
+        controller.setView(new ViewMenu());
+
+        controller.update();
     }
 
     private static void addMenuItem(Menu menu, int indexItemMenu) {

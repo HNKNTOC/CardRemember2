@@ -5,15 +5,16 @@ import com.caredRemember2.model.Menu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Use for display {@link Menu}.
  */
-public class ViewMenu implements View<Menu> {
+public class ViewMenu implements View {
     private final JFrame frame = new JFrame();
-    private Menu menu = new MenuDefault();
     private String label = "This label.";
+    private List<Menu.MenuItem> mapMenuItems = new ArrayList<>();
 
     public String getLabel() {
         return label;
@@ -23,17 +24,28 @@ public class ViewMenu implements View<Menu> {
         this.label = label;
     }
 
-    @Override
-    public void setModel(Menu model) {
-        this.menu = model;
+    public void setMapMenuItems(List<Menu.MenuItem> mapMenuItems) {
+        this.mapMenuItems = mapMenuItems;
     }
 
     @Override
     public void show() {
         Container contentPane = frame.getContentPane();
-        contentPane.add(createMenuItemsPanel(menu), BorderLayout.CENTER);
+        contentPane.add(createMenuItemsPanel(), BorderLayout.CENTER);
         contentPane.add(createLabelPanel(), BorderLayout.NORTH);
         showFrame(frame);
+    }
+
+    public void addMenuItem(Menu.MenuItem menuItem) {
+        mapMenuItems.add(menuItem);
+    }
+
+    public int getMenuItemSize() {
+        return mapMenuItems.size();
+    }
+
+    public void removeMenuItem() {
+        mapMenuItems.clear();
     }
 
     private JPanel createLabelPanel() {
@@ -45,24 +57,26 @@ public class ViewMenu implements View<Menu> {
 
     /**
      * Use for creating {@link JPanel} on display MenuItems.
-     *
-     * @param menu {@link Menu} which need display on {@link JPanel}.
      */
-    private JPanel createMenuItemsPanel(Menu menu) {
-        int border = 10;
+    private JPanel createMenuItemsPanel() {
         JPanelMenuItems panel = new JPanelMenuItems();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        settingForMenuItemsPanel(panel);
 
-        for (Menu.MenuItem menuItem : menu.getAllMenuItem()) {
+        for (Menu.MenuItem mapMenuItem : mapMenuItems) {
             panel.addMenuItem(
-                    menuItem.getName(),
-                    menuItem.getListeners()
+                    mapMenuItem.getName(),
+                    mapMenuItem.getListeners()
             );
         }
-        panel.setBorder(BorderFactory
-                .createEmptyBorder(border, border, border, border));
         return panel;
 
+    }
+
+    private void settingForMenuItemsPanel(JPanelMenuItems panel) {
+        int border = 10;
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBorder(BorderFactory
+                .createEmptyBorder(border, border, border, border));
     }
 
 
@@ -73,47 +87,6 @@ public class ViewMenu implements View<Menu> {
         frame.setVisible(true);
     }
 
-    /**
-     * Use instead null. Specifies about need set Menu.
-     */
-    private class MenuDefault extends Menu {
-
-        @Override
-        public List<MenuItem> getAllMenuItem() {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public void addMenuItem(String menuItemName) {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public int sizeMenuItem() {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public String getMenuItemName(int indexItemMenu) {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public List<MenuItemListener> getItemMenuListen(int indexItemMenu) {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public void addMenuItemListener(int indexItemMenu, MenuItemListener listener) {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-
-        @Override
-        public String[] getAllMenuItemNames() {
-            throw new UnsupportedOperationException("Failed - use DefaultMenu. Set Menu for ViewMenu.");
-        }
-    }
-
     private class JPanelMenuItems extends JPanel {
         /**
          * Add MenuItem.
@@ -121,7 +94,7 @@ public class ViewMenu implements View<Menu> {
          * @param menuItemName Name for MenuItem.
          * @param listeners    Listeners for MenuItem.
          */
-        private void addMenuItem(String menuItemName, List<Menu.MenuItemListener> listeners) {
+        private void addMenuItem(String menuItemName, List<? extends ActionListener> listeners) {
             JButton menuItem = new JButton(menuItemName);
             for (ActionListener listener : listeners) {
                 menuItem.addActionListener(listener);

@@ -8,7 +8,7 @@ import com.caredRemember2.view.View;
  * M - Model
  * V - View
  */
-public interface Controller<M extends Model, V extends View<M>> {
+public interface Controller<M extends Model, V extends View> {
     /**
      * Set {@link Model} for control.
      *

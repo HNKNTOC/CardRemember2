@@ -4,12 +4,12 @@ import com.caredRemember2.model.Model;
 import com.caredRemember2.view.View;
 
 /**
- * TODO: Add doc
- * Created by Nikita on 27.12.2016.
+ * Default implementation for update().
+ * Add method updateDataForView() in which update data for view.
  */
-public abstract class ControllerDefault<M extends Model, V extends View<M>> implements Controller<M, V> {
-    private M model;
-    private V view;
+public abstract class ControllerDefault<M extends Model, V extends View> implements Controller<M, V> {
+    protected M model;
+    protected V view;
 
     @Override
     public void setModel(M model) {
@@ -23,7 +23,11 @@ public abstract class ControllerDefault<M extends Model, V extends View<M>> impl
 
     @Override
     public void update() {
-        view.setModel(model);
+        if (view == null)
+            throw new IllegalStateException("View not needs equal null. Set the View in to the Controller.");
+        if (model == null)
+            throw new IllegalStateException("Model not needs equal null. Set the Model in to the Controller.");
+        updateDataForView();
         view.show();
     }
 
