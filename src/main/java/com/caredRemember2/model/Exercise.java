@@ -1,8 +1,22 @@
 package com.caredRemember2.model;
 
 /**
- * TODO: Add doc
- * Created by Nikita on 27.12.2016.
+ * This Exercise.
  */
 public class Exercise implements Model {
+    private final String name;
+    private final String description;
+
+    public Exercise(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

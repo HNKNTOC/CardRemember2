@@ -11,4 +11,11 @@ public abstract class ViewSwing implements View {
     public JFrame getFrame() {
         return frame;
     }
+
+    protected void showFrame(JFrame frame) {
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 }

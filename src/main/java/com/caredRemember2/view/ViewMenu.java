@@ -78,14 +78,6 @@ public class ViewMenu extends ViewSwing {
                 .createEmptyBorder(border, border, border, border));
     }
 
-
-    private void showFrame(JFrame frame) {
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
     private class JPanelMenuItems extends JPanel {
         /**
          * Add MenuItem.
