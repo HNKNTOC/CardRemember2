@@ -13,8 +13,8 @@ public abstract class ViewSwing implements View {
     }
 
     @Override
-    public void hide() {
-        frame.setVisible(false);
+    public void close() {
+        frame.dispose();
     }
 
     protected void showFrame(JFrame frame) {

@@ -13,5 +13,5 @@ public interface View {
     /**
      * Hide {@link View}.
      */
-    void hide();
+    void close();
 }

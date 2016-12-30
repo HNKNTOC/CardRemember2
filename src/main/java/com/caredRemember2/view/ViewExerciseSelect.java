@@ -71,7 +71,7 @@ public class ViewExerciseSelect extends ViewSwing {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            hide();
+            close();
         }
     }
 }
