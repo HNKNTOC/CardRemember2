@@ -23,34 +23,6 @@ public class Menu implements Model {
         this.menuItems = new ArrayList<>();
     }
 
-    public void addMenuItem(String menuItemName) {
-        menuItems.add(new MenuItem(menuItemName));
-    }
-
-    public int sizeMenuItem() {
-        return menuItems.size();
-    }
-
-    public String getMenuItemName(int indexItemMenu) {
-        return menuItems.get(indexItemMenu).getName();
-    }
-
-    public List<MenuItemListener> getItemMenuListen(int indexItemMenu) {
-        return menuItems.get(indexItemMenu).getListeners();
-    }
-
-    public void addMenuItemListener(int indexItemMenu, MenuItemListener listener) {
-        menuItems.get(indexItemMenu).addListener(listener);
-    }
-
-    public String[] getAllMenuItemNames() {
-        String[] names = new String[menuItems.size()];
-        for (int i = 0; i < menuItems.size(); i++) {
-            names[i] = menuItems.get(i).getName();
-        }
-        return names;
-    }
-
     public List<MenuItem> getAllMenuItem() {
         return new ArrayList<>(menuItems);
     }
