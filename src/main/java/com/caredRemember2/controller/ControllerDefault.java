@@ -1,13 +1,12 @@
 package com.caredRemember2.controller;
 
-import com.caredRemember2.model.Model;
 import com.caredRemember2.view.View;
 
 /**
  * Default implementation for update().
  * Add method updateDataForView() in which update data for view.
  */
-public abstract class ControllerDefault<M extends Model, V extends View> implements Controller<M, V> {
+public abstract class ControllerDefault<M, V extends View> implements Controller<M, V> {
     protected M model;
     protected V view;
 

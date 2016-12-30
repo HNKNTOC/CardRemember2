@@ -5,12 +5,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean name="listener" class="com.caredRemember2.model.DefaultListener"/>
+    <bean name="listenerForExerciseSelect" class="com.caredRemember2.model.ListenerClickExerciseSelect"/>
 
     <beans>
         <util:list id="listMenuItem">
             <bean name="menuItem_1" class="com.caredRemember2.model.MenuItem"
-                  c:name="Item_1"
-                  c:menuItemListener-ref="listener"/>
+                  c:name="Exercise select"
+                  c:menuItemListener-ref="listenerForExerciseSelect"/>
 
             <bean name="menuItem_2" class="com.caredRemember2.model.MenuItem"
                   c:name="Item_2"

@@ -12,7 +12,7 @@ public class Main {
     private static ApplicationContext context = new ClassPathXmlApplicationContext("beans/menu.xml");
 
     public static void main(String[] args) {
-        goExerciseSelect();
+        goMenu();
     }
 
     private static void goExerciseSelect() {
