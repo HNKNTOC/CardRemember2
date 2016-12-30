@@ -1,7 +1,5 @@
 package com.caredRemember2.view;
 
-import com.caredRemember2.model.DefaultListener;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +13,7 @@ import java.util.List;
 public class ViewExerciseSelect extends ViewSwing {
     private List<String> listNameExercise = new ArrayList<>();
     private ActionListener listenerForSelect = new ExerciseSelectListener();
-    private ActionListener listenerForCancel = new DefaultListener();
+    private ActionListener listenerForCancel = new CancelListener();
     private JList<Object> listExercise;
 
     public void addNameExercise(String name) {
@@ -66,6 +64,14 @@ public class ViewExerciseSelect extends ViewSwing {
                 //TODO: add Class StorageController and add .getControllerForExercise(exerciseName);
                 JOptionPane.showMessageDialog(frame, "You select " + listExercise.getSelectedValue());
             }
+        }
+    }
+
+    private class CancelListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            hide();
         }
     }
 }

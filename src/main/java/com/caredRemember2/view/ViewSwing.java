@@ -12,6 +12,11 @@ public abstract class ViewSwing implements View {
         return frame;
     }
 
+    @Override
+    public void hide() {
+        frame.setVisible(false);
+    }
+
     protected void showFrame(JFrame frame) {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
