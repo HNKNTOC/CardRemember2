@@ -1,10 +1,5 @@
 package com.caredRemember2.model;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +7,6 @@ import java.util.List;
  * Use for select next {@link com.caredRemember2.view.View}.
  */
 public class Menu implements Model {
-    private static final Logger LOGGER = LogManager.getLogger(Menu.class);
     private List<MenuItem> menuItems;
 
     public Menu(List<MenuItem> menuItems) {
@@ -29,44 +23,5 @@ public class Menu implements Model {
 
     public MenuItem getMenuItem(int index) {
         return menuItems.get(index);
-    }
-
-
-    public static class MenuItem {
-        private String name;
-        private List<MenuItemListener> listeners = new ArrayList<>();
-
-        private MenuItem(String name) {
-            this.name = name;
-        }
-
-        public MenuItem(String name, MenuItemListener menuItemListener) {
-            this(name);
-            this.listeners.add(menuItemListener);
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public List<MenuItemListener> getListeners() {
-            return listeners;
-        }
-
-        private void addListener(MenuItemListener listener) {
-            this.listeners.add(listener);
-        }
-    }
-
-    public static class MenuItemListener implements ActionListener {
-        private final Logger LOGGER = LogManager.getLogger(MenuItemListener.class);
-
-        public MenuItemListener() {
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            LOGGER.info(e);
-        }
     }
 }

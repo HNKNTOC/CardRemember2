@@ -1,6 +1,7 @@
 package com.caredRemember2.view;
 
 import com.caredRemember2.model.Menu;
+import com.caredRemember2.model.MenuItem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ import java.util.List;
 public class ViewMenu implements View {
     private final JFrame frame = new JFrame();
     private String label = "This label.";
-    private List<Menu.MenuItem> mapMenuItems = new ArrayList<>();
+    private List<com.caredRemember2.model.MenuItem> mapMenuItems = new ArrayList<>();
 
     public String getLabel() {
         return label;
@@ -24,7 +25,7 @@ public class ViewMenu implements View {
         this.label = label;
     }
 
-    public void setMapMenuItems(List<Menu.MenuItem> mapMenuItems) {
+    public void setMapMenuItems(List<MenuItem> mapMenuItems) {
         this.mapMenuItems = mapMenuItems;
     }
 
@@ -42,7 +43,7 @@ public class ViewMenu implements View {
         return label;
     }
 
-    public void addMenuItem(Menu.MenuItem menuItem) {
+    public void addMenuItem(MenuItem menuItem) {
         mapMenuItems.add(menuItem);
     }
 
@@ -61,7 +62,7 @@ public class ViewMenu implements View {
         JPanelMenuItems panel = new JPanelMenuItems();
         settingForMenuItemsPanel(panel);
 
-        for (Menu.MenuItem mapMenuItem : mapMenuItems) {
+        for (MenuItem mapMenuItem : mapMenuItems) {
             panel.addMenuItem(
                     mapMenuItem.getName(),
                     mapMenuItem.getListeners()

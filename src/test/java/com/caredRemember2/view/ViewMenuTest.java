@@ -1,6 +1,6 @@
 package com.caredRemember2.view;
 
-import com.caredRemember2.model.Menu;
+import com.caredRemember2.model.MenuItem;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ public class ViewMenuTest {
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
     public void checkInvokeMenuItemsMethods() throws Exception {
-        Menu.MenuItem item_0 = createMenuItemMock("Item_0");
-        Menu.MenuItem item_1 = createMenuItemMock("Item_1");
-        Menu.MenuItem item_2 = createMenuItemMock("Item_2");
+        MenuItem item_0 = createMenuItemMock("Item_0");
+        MenuItem item_1 = createMenuItemMock("Item_1");
+        MenuItem item_2 = createMenuItemMock("Item_2");
 
-        ArrayList<Menu.MenuItem> mapMenuItems = new ArrayList<>();
+        ArrayList<MenuItem> mapMenuItems = new ArrayList<>();
         mapMenuItems.add(item_0);
         mapMenuItems.add(item_1);
         mapMenuItems.add(item_2);
@@ -31,8 +31,8 @@ public class ViewMenuTest {
 
     }
 
-    private static Menu.MenuItem createMenuItemMock(String menuItemName) {
-        Menu.MenuItem mock = mock(Menu.MenuItem.class);
+    private static MenuItem createMenuItemMock(String menuItemName) {
+        MenuItem mock = mock(MenuItem.class);
         when(mock.getName()).thenReturn(menuItemName);
         return mock;
     }
