@@ -12,17 +12,16 @@ import java.util.List;
 /**
  * Use for display {@link Menu}.
  */
-public class ViewMenu implements View {
-    private final JFrame frame = new JFrame();
-    private String label = "This label.";
+public class ViewMenu extends ViewSwing {
+    private String menuLabel = "This label.";
     private List<com.caredRemember2.model.MenuItem> mapMenuItems = new ArrayList<>();
 
-    public String getLabel() {
-        return label;
+    public String getMenuLabel() {
+        return menuLabel;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setMenuLabel(String menuLabel) {
+        this.menuLabel = menuLabel;
     }
 
     public void setMapMenuItems(List<MenuItem> mapMenuItems) {
@@ -38,7 +37,7 @@ public class ViewMenu implements View {
     }
 
     private JLabel createLabel() {
-        JLabel label = new JLabel(this.label);
+        JLabel label = new JLabel(this.menuLabel);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         return label;
     }
