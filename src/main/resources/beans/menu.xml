@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean name="listener" class="com.caredRemember2.model.Menu$MenuItemListener"/>
+
+    <beans>
+        <util:list id="listMenuItem">
+            <bean name="menuItem_1" class="com.caredRemember2.model.Menu$MenuItem"
+                  c:name="Item_1"
+                  c:menuItemListener-ref="listener"/>
+
+            <bean name="menuItem_2" class="com.caredRemember2.model.Menu$MenuItem"
+                  c:name="Item_2"
+                  c:menuItemListener-ref="listener"/>
+
+            <bean name="menuItem_3" class="com.caredRemember2.model.Menu$MenuItem"
+                  c:name="Item_3"
+                  c:menuItemListener-ref="listener"/>
+
+        </util:list>
+
+        <bean name="menu" class="com.caredRemember2.model.Menu" c:menuItems-ref="listMenuItem"/>
+    </beans>
+
+</beans>

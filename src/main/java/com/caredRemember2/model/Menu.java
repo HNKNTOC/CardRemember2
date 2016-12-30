@@ -60,12 +60,17 @@ public class Menu implements Model {
     }
 
 
-    public class MenuItem {
+    public static class MenuItem {
         private String name;
         private List<MenuItemListener> listeners = new ArrayList<>();
 
-        private MenuItem(String menuItemName) {
-            this.name = menuItemName;
+        private MenuItem(String name) {
+            this.name = name;
+        }
+
+        public MenuItem(String name, MenuItemListener menuItemListener) {
+            this(name);
+            this.listeners.add(menuItemListener);
         }
 
         public String getName() {
@@ -84,14 +89,7 @@ public class Menu implements Model {
     public static class MenuItemListener implements ActionListener {
         private final Logger LOGGER = LogManager.getLogger(MenuItemListener.class);
 
-        private MenuItem menuItem;
-
-        public MenuItemListener(MenuItem menuItem) {
-            this.menuItem = menuItem;
-        }
-
-        public MenuItem getMenuItem() {
-            return menuItem;
+        public MenuItemListener() {
         }
 
         @Override

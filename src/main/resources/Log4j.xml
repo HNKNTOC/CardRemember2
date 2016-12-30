@@ -19,7 +19,7 @@
         </layout>
     </appender>
 
-    <logger name="com.cardRemember2">
+    <logger name="com.caredRemember2">
         <level value="DEBUG"/>
         <appender-ref ref="Console"/>
     </logger>
