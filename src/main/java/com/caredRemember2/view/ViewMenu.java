@@ -29,11 +29,10 @@ public class ViewMenu extends ViewSwing {
     }
 
     @Override
-    public void show() {
-        Container contentPane = frame.getContentPane();
+    protected void settingMainFrame() {
+        Container contentPane = mainFrame.getContentPane();
         contentPane.add(createMenuItemsPanel(), BorderLayout.CENTER);
         contentPane.add(createLabel(), BorderLayout.NORTH);
-        showFrame(frame);
     }
 
     private JLabel createLabel() {
@@ -90,7 +89,7 @@ public class ViewMenu extends ViewSwing {
             for (ActionListener listener : listeners) {
                 menuItem.addActionListener(listener);
             }
-            menuItem.setAlignmentX(Component.CENTER_ALIGNMENT);
+            menuItem.setAlignmentX(JComponent.CENTER_ALIGNMENT);
             this.add(menuItem);
         }
     }

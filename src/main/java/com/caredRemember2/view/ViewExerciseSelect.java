@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Extract ViewSwing of ViewMenu
+ * Use for display list Exercise for select
  */
 public class ViewExerciseSelect extends ViewSwing {
     private List<String> listNameExercise = new ArrayList<>();
@@ -33,11 +33,10 @@ public class ViewExerciseSelect extends ViewSwing {
     }
 
     @Override
-    public void show() {
+    protected void settingMainFrame() {
         listExercise = new JList<>(listNameExercise.toArray());
-        frame.add(listExercise);
-        frame.add(createButtonPanel(), BorderLayout.SOUTH);
-        showFrame(frame);
+        mainFrame.add(listExercise);
+        mainFrame.add(createButtonPanel(), BorderLayout.SOUTH);
     }
 
     private JPanel createButtonPanel() {
@@ -51,18 +50,16 @@ public class ViewExerciseSelect extends ViewSwing {
         return panel;
     }
 
-
     private class ExerciseSelectListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (listExercise == null)
-                throw new IllegalStateException("Failed! listExercise not needs equal null. Use method show().");
+            checkNotNull(listExercise, "Failed! listExercise not needs equal null. Use method show().");
             int index = listExercise.getSelectedIndex();
             if (index == -1) {
-                JOptionPane.showMessageDialog(frame, "You not select exercise.");
+                JOptionPane.showMessageDialog(mainFrame, "You not select exercise.");
             } else {
                 //TODO: add Class StorageController and add .getControllerForExercise(exerciseName);
-                JOptionPane.showMessageDialog(frame, "You select " + listExercise.getSelectedValue());
+                JOptionPane.showMessageDialog(mainFrame, "You select " + listExercise.getSelectedValue());
             }
         }
     }

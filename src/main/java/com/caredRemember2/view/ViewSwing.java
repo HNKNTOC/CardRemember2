@@ -6,21 +6,37 @@ import javax.swing.*;
  * Common for {@link View} use Swing.
  */
 public abstract class ViewSwing implements View {
-    protected final JFrame frame = new JFrame();
+    protected final JFrame mainFrame = new JFrame();
 
-    public JFrame getFrame() {
-        return frame;
+    public JFrame getMainFrame() {
+        return mainFrame;
     }
 
     @Override
     public void close() {
-        frame.dispose();
+        mainFrame.dispose();
     }
+
+    @Override
+    public void show() {
+        settingMainFrame();
+        showFrame(mainFrame);
+    }
+
+    /**
+     * Use for setting mainFrame before display it.
+     */
+    protected abstract void settingMainFrame();
 
     protected void showFrame(JFrame frame) {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    protected static void checkNotNull(Object obj, String message) {
+        if (obj == null)
+            throw new IllegalStateException(message);
     }
 }

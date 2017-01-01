@@ -2,6 +2,7 @@ package com.caredRemember2;
 
 import com.caredRemember2.controller.ControllerMenu;
 import com.caredRemember2.model.Menu;
+import com.caredRemember2.view.ViewExercise;
 import com.caredRemember2.view.ViewExerciseSelect;
 import com.caredRemember2.view.ViewMenu;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +13,13 @@ public class Main {
     private static ApplicationContext context = new ClassPathXmlApplicationContext("beans/menu.xml");
 
     public static void main(String[] args) {
-        goMenu();
+        goViewExercise();
+    }
+
+    private static void goViewExercise() {
+        ViewExercise view = new ViewExercise();
+        view.setWordForeign("Cat");
+        view.show();
     }
 
     private static void goExerciseSelect() {
