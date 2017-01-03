@@ -21,10 +21,10 @@ public class ListenerClickExerciseSelect implements ActionListener {
 
     private ArrayList<Exercise> createExercises() {
         ArrayList<Exercise> list = new ArrayList<>();
-        list.add(new Exercise("Exercise_1", ""));
-        list.add(new Exercise("Exercise_2", ""));
-        list.add(new Exercise("Exercise_3", ""));
-        list.add(new Exercise("Exercise_4", ""));
+        list.add(new Exercise("Exercise_1"));
+        list.add(new Exercise("Exercise_2"));
+        list.add(new Exercise("Exercise_3"));
+        list.add(new Exercise("Exercise_4"));
         return list;
     }
 }

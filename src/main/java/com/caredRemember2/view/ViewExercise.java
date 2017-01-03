@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * Use for display
  */
+//TODO: delete wordForeign and replace on QUESTION.
 public class ViewExercise extends ViewSwing {
     private String wordForeign;
     private static final String QUESTION = "Write translate word.";

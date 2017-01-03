@@ -5,11 +5,31 @@ package com.caredRemember2.model;
  */
 public class Exercise implements Model {
     private final String name;
-    private final String description;
+    private String description;
+    private String question = "";
 
-    public Exercise(String name, String description) {
+    public Exercise(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getQuestion() {
+        return this.question;
+    }
+
+    public void sayAnsver(String answer) {
+
+    }
+
+    public boolean hasNextQuestion() {
+        return false;
+    }
+
+    public void nextQuestion() {
+
     }
 
     public String getName() {
