@@ -1,6 +1,9 @@
 package com.caredRemember2;
 
+import com.caredRemember2.controller.ControllerExercise;
 import com.caredRemember2.controller.ControllerMenu;
+import com.caredRemember2.model.DefaultListener;
+import com.caredRemember2.model.Exercise;
 import com.caredRemember2.model.Menu;
 import com.caredRemember2.view.ViewExercise;
 import com.caredRemember2.view.ViewExerciseSelect;
@@ -10,15 +13,26 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class Main {
-    private static ApplicationContext context = new ClassPathXmlApplicationContext("beans/menu.xml");
+    private static ApplicationContext contextMenu = new ClassPathXmlApplicationContext("beans/menu.xml");
+    private static ApplicationContext contextExercise = new ClassPathXmlApplicationContext("beans/exercise.xml");
 
     public static void main(String[] args) {
-        goViewExercise();
+        goExercise();
+    }
+
+    private static void goExercise() {
+        Exercise exercise = contextExercise.getBean("exercise", Exercise.class);
+
+        ControllerExercise controller = new ControllerExercise();
+        controller.setModel(exercise);
+        controller.setView(new ViewExercise());
+
+        controller.update();
     }
 
     private static void goViewExercise() {
         ViewExercise view = new ViewExercise();
-        view.setWordForeign("Cat");
+        view.setListenerForAnswer(new DefaultListener());
         view.show();
     }
 
@@ -32,7 +46,7 @@ public class Main {
     }
 
     private static void goMenu() {
-        Menu menu = context.getBean("menu", Menu.class);
+        Menu menu = contextMenu.getBean("menu", Menu.class);
 
         ControllerMenu controller = new ControllerMenu();
         controller.setModel(menu);

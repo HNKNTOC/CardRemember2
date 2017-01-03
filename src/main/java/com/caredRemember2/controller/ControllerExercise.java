@@ -2,24 +2,38 @@ package com.caredRemember2.controller;
 
 import com.caredRemember2.model.Exercise;
 import com.caredRemember2.view.ViewExercise;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * TODO: Add doc
- * Created by Nikita on 27.12.2016.
+ * Use for control {@link Exercise} and {@link ViewExercise}
  */
 public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise> {
+    private static final Logger LOGGER = LogManager.getLogger(ControllerExercise.class);
     @Override
     void updateDataForView() {
-        view.setWordForeign(model.getQuestion());
+        view.setQuestion(model.getQuestion());
+        view.setListenerForAnswer(new AnswerListener());
     }
 
     private class AnswerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            String answer = view.getAnswer();
+            LOGGER.debug("Click. Answer = " + answer);
+            model.sayAnswer(answer);
+            if (model.hasNextQuestion()) {
+                LOGGER.debug("Next question.");
+                model.nextQuestion();
+                updateDataForView();
+                view.updateContentPanel();
+            } else {
+                LOGGER.debug("Has next question return false. View close.");
+                view.close();
+            }
         }
     }
 }

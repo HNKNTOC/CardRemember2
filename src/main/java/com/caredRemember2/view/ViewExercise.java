@@ -7,20 +7,11 @@ import java.awt.event.ActionListener;
 /**
  * Use for display
  */
-//TODO: delete wordForeign and replace on QUESTION.
 public class ViewExercise extends ViewSwing {
-    private String wordForeign;
-    private static final String QUESTION = "Write translate word.";
+    private String question = "This default string for question.";
     private static final String TEXT_FOR_BUTTON_ANSWER = "To answer";
     private ActionListener listenerForAnswer;
-
-    public String getWordForeign() {
-        return wordForeign;
-    }
-
-    public void setWordForeign(String wordForeign) {
-        this.wordForeign = wordForeign;
-    }
+    private JTextField textFieldForAnswer = new JTextField();
 
     public ActionListener getListenerForAnswer() {
         return listenerForAnswer;
@@ -30,11 +21,21 @@ public class ViewExercise extends ViewSwing {
         this.listenerForAnswer = listenerForAnswer;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getAnswer() {
+        return textFieldForAnswer.getText().trim();
+    }
+
     @Override
     protected void settingMainFrame() {
-        checkNotNull(wordForeign, "Failed! wordForeign not needs equal null. Use method setWordForeign().");
         checkNotNull(listenerForAnswer, "Failed! listenerForAnswer not needs equal null. Use method setListenerForAnswer().");
-
         mainFrame.add(createNorthPanel(), BorderLayout.NORTH);
         mainFrame.add(createCentralPanel(), BorderLayout.CENTER);
         JButton buttonAnswer = new JButton(TEXT_FOR_BUTTON_ANSWER);
@@ -44,7 +45,7 @@ public class ViewExercise extends ViewSwing {
 
     private JPanel createNorthPanel() {
         JPanel panel = new JPanel();
-        JLabel labelQuestion = new JLabel(QUESTION);
+        JLabel labelQuestion = new JLabel(question);
         labelQuestion.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         panel.add(labelQuestion);
         return panel;
@@ -53,11 +54,7 @@ public class ViewExercise extends ViewSwing {
     private JPanel createCentralPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        JLabel labelWordForeign = new JLabel(wordForeign);
-        labelWordForeign.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        panel.add(labelWordForeign);
-        panel.add(new JTextField());
+        panel.add(textFieldForAnswer);
         return panel;
     }
 

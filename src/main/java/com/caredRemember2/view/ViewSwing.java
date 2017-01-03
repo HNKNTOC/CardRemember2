@@ -19,8 +19,9 @@ public abstract class ViewSwing implements View {
 
     @Override
     public void show() {
+        mainFrame.getContentPane().removeAll();
         settingMainFrame();
-        showFrame(mainFrame);
+        showMainFrame(mainFrame);
     }
 
     /**
@@ -28,11 +29,21 @@ public abstract class ViewSwing implements View {
      */
     protected abstract void settingMainFrame();
 
-    protected void showFrame(JFrame frame) {
+
+    protected void showMainFrame(JFrame frame) {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    /**
+     * Use for update data without recreate frame.
+     */
+    public void updateContentPanel() {
+        mainFrame.getContentPane().removeAll();
+        settingMainFrame();
+        mainFrame.revalidate();
     }
 
     protected static void checkNotNull(Object obj, String message) {

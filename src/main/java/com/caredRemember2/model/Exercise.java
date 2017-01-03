@@ -6,7 +6,7 @@ package com.caredRemember2.model;
 public class Exercise implements Model {
     private final String name;
     private String description;
-    private String question = "";
+    private String question = "This default string for question.";
 
     public Exercise(String name) {
         this.name = name;
@@ -20,12 +20,12 @@ public class Exercise implements Model {
         return this.question;
     }
 
-    public void sayAnsver(String answer) {
+    public void sayAnswer(String answer) {
 
     }
 
     public boolean hasNextQuestion() {
-        return false;
+        return true;
     }
 
     public void nextQuestion() {

@@ -4,11 +4,13 @@ import com.caredRemember2.model.Exercise;
 import com.caredRemember2.view.ViewExercise;
 import org.junit.Test;
 
+import java.awt.event.ActionListener;
+
 import static org.mockito.Mockito.*;
 
 public class ControllerExerciseTest {
     @Test
-    public void checkUpdateData() throws Exception {
+    public void checkDataForView() throws Exception {
         ControllerExercise controller = new ControllerExercise();
         String value = "Test question.";
         Exercise exercise = mock(Exercise.class);
@@ -19,6 +21,7 @@ public class ControllerExerciseTest {
         controller.setView(viewExercise);
         controller.update();
 
-        verify(viewExercise).setWordForeign(value);
+        verify(viewExercise).setQuestion(value);
+        verify(viewExercise).setListenerForAnswer(any(ActionListener.class));
     }
 }
