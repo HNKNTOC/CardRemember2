@@ -1,6 +1,7 @@
 package com.caredRemember2.model;
 
 import com.caredRemember2.controller.ControllerExerciseSelect;
+import com.caredRemember2.model.task.Exercise;
 import com.caredRemember2.view.ViewExerciseSelect;
 
 import java.awt.event.ActionEvent;

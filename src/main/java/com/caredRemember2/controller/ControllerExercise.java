@@ -1,6 +1,6 @@
 package com.caredRemember2.controller;
 
-import com.caredRemember2.model.Exercise;
+import com.caredRemember2.model.task.Exercise;
 import com.caredRemember2.view.ViewExercise;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

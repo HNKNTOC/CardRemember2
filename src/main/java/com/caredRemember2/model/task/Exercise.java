@@ -1,4 +1,6 @@
-package com.caredRemember2.model;
+package com.caredRemember2.model.task;
+
+import com.caredRemember2.model.Model;
 
 /**
  * This Exercise.
