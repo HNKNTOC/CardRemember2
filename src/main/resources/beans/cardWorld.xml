@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:list id="cardWorlds" value-type="com.caredRemember2.model.task.CardWord">
+        <bean name="CardCat" class="com.caredRemember2.model.task.CardWord"
+              c:translateWord="Кот"
+              c:foreignWord="Cat"/>
+
+        <bean name="CardCat" class="com.caredRemember2.model.task.CardWord"
+              c:translateWord="Собака"
+              c:foreignWord="Dog"/>
+
+        <bean name="CardCat" class="com.caredRemember2.model.task.CardWord"
+              c:translateWord="Дом"
+              c:foreignWord="Home"/>
+    </util:list>
+
+</beans>
