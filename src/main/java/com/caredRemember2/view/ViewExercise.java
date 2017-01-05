@@ -40,8 +40,9 @@ public class ViewExercise extends ViewSwing {
         mainPanel.add(createNorthPanel(), BorderLayout.NORTH);
         mainPanel.add(createCentralPanel(), BorderLayout.CENTER);
         mainPanel.add(createSouthPanel(), BorderLayout.SOUTH);
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         mainFrame.add(mainPanel);
+        mainFrame.setMinimumSize(new Dimension(100, 130));
     }
 
     private JPanel createSouthPanel() {
@@ -63,6 +64,7 @@ public class ViewExercise extends ViewSwing {
     private JPanel createCentralPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        textFieldForAnswer.setMaximumSize(new Dimension(200, 20));
         panel.add(textFieldForAnswer);
         return panel;
     }
