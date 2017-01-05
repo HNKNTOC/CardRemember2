@@ -13,11 +13,23 @@ import java.awt.event.ActionListener;
  */
 public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise> {
     private static final Logger LOGGER = LogManager.getLogger(ControllerExercise.class);
+    /**
+     * Question which is set now.
+     */
+    private Exercise.Question nowQuestion;
+
     @Override
-        //TODO: remodel.
     void updateDataForView() {
-        //view.setQuestion(model.getQuestion());
-        view.setListenerForAnswer(new AnswerListener());
+        if (model.hasNext()) {
+            nowQuestion = model.next();
+            LOGGER.info("updateDataForView: Next question " + nowQuestion);
+            view.setQuestion(nowQuestion.getQuestion());
+            view.setListenerForAnswer(new AnswerListener());
+        } else {
+            LOGGER.debug("updateDataForView: Model not has next question. View close.");
+            view.close();
+            model.handlingAnswer();
+        }
     }
 
     private class AnswerListener implements ActionListener {
@@ -25,16 +37,9 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
         public void actionPerformed(ActionEvent e) {
             String answer = view.getAnswer();
             LOGGER.debug("Click. Answer = " + answer);
-            //model.handlingAnswer(answer);
-            //if (model.hasNextQuestion()) {
-                LOGGER.debug("Next question.");
-            //model.nextQuestion();
-                updateDataForView();
-                view.updateContentPanel();
-            //} else {
-                LOGGER.debug("Has next question return false. View close.");
-                view.close();
-            //}
+            nowQuestion.setAnswer(answer);
+            updateDataForView();
+            view.updateContentPanel();
         }
     }
 }
