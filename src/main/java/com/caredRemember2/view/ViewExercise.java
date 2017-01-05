@@ -36,11 +36,20 @@ public class ViewExercise extends ViewSwing {
     @Override
     protected void settingMainFrame() {
         checkNotNull(listenerForAnswer, "Failed! listenerForAnswer not needs equal null. Use method setListenerForAnswer().");
-        mainFrame.add(createNorthPanel(), BorderLayout.NORTH);
-        mainFrame.add(createCentralPanel(), BorderLayout.CENTER);
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(createNorthPanel(), BorderLayout.NORTH);
+        mainPanel.add(createCentralPanel(), BorderLayout.CENTER);
+        mainPanel.add(createSouthPanel(), BorderLayout.SOUTH);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainFrame.add(mainPanel);
+    }
+
+    private JPanel createSouthPanel() {
+        JPanel panel = new JPanel();
         JButton buttonAnswer = new JButton(TEXT_FOR_BUTTON_ANSWER);
         buttonAnswer.addActionListener(listenerForAnswer);
-        mainFrame.add(buttonAnswer, BorderLayout.SOUTH);
+        panel.add(buttonAnswer);
+        return panel;
     }
 
     private JPanel createNorthPanel() {
