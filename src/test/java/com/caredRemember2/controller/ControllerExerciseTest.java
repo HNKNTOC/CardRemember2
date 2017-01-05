@@ -16,7 +16,7 @@ public class ControllerExerciseTest {
         Exercise exercise = mock(Exercise.class);
         ViewExercise viewExercise = mock(ViewExercise.class);
 
-        when(exercise.getQuestion()).thenReturn(value);
+        //when(exercise.getQuestion()).thenReturn(value);
         controller.setModel(exercise);
         controller.setView(viewExercise);
         controller.update();

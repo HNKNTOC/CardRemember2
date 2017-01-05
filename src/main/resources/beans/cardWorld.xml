@@ -4,7 +4,7 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <util:list id="cardWorlds" value-type="com.caredRemember2.model.task.CardWord">
+    <util:list id="cardWords" value-type="com.caredRemember2.model.task.CardWord">
         <bean name="CardCat" class="com.caredRemember2.model.task.CardWord"
               c:translateWord="Кот"
               c:foreignWord="Cat"/>

@@ -9,8 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class StorageCardWorldTest {
     @Test
     public void testGetAllCardWorld() throws Exception {
-        StorageCardWorld storage = new StorageCardWorld();
-        List<CardWord> allCardWorld = storage.getAllCardWorld();
+        List<CardWord> allCardWorld = StorageCardWorld.getAllCardWords();
         assertEquals(allCardWorld.size(), 3);
     }
 }

@@ -14,8 +14,9 @@ import java.awt.event.ActionListener;
 public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise> {
     private static final Logger LOGGER = LogManager.getLogger(ControllerExercise.class);
     @Override
+        //TODO: remodel.
     void updateDataForView() {
-        view.setQuestion(model.getQuestion());
+        //view.setQuestion(model.getQuestion());
         view.setListenerForAnswer(new AnswerListener());
     }
 
@@ -24,16 +25,16 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
         public void actionPerformed(ActionEvent e) {
             String answer = view.getAnswer();
             LOGGER.debug("Click. Answer = " + answer);
-            model.sayAnswer(answer);
-            if (model.hasNextQuestion()) {
+            //model.handlingAnswer(answer);
+            //if (model.hasNextQuestion()) {
                 LOGGER.debug("Next question.");
-                model.nextQuestion();
+            //model.nextQuestion();
                 updateDataForView();
                 view.updateContentPanel();
-            } else {
+            //} else {
                 LOGGER.debug("Has next question return false. View close.");
                 view.close();
-            }
+            //}
         }
     }
 }
