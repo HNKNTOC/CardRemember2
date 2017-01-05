@@ -17,6 +17,14 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
      * Question which is set now.
      */
     private Exercise.Question nowQuestion;
+    private ActionListener listenerForAnswer = new AnswerListener();
+
+    public ControllerExercise() {
+    }
+
+    public ActionListener getListenerForAnswer() {
+        return listenerForAnswer;
+    }
 
     @Override
     void updateDataForView() {
@@ -24,7 +32,7 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
             nowQuestion = model.next();
             LOGGER.info("updateDataForView: Next question " + nowQuestion);
             view.setQuestion(nowQuestion.getQuestion());
-            view.setListenerForAnswer(new AnswerListener());
+            view.setListenerForAnswer(listenerForAnswer);
         } else {
             LOGGER.debug("updateDataForView: Model not has next question. View close.");
             view.close();
