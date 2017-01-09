@@ -2,7 +2,7 @@ package com.caredRemember2;
 
 import com.caredRemember2.controller.ControllerExercise;
 import com.caredRemember2.controller.ControllerMenu;
-import com.caredRemember2.model.DefaultListener;
+import com.caredRemember2.model.ListenerDefault;
 import com.caredRemember2.model.Menu;
 import com.caredRemember2.model.task.Exercise;
 import com.caredRemember2.view.ViewExercise;
@@ -32,7 +32,7 @@ public class Main {
 
     private static void goViewExercise() {
         ViewExercise view = new ViewExercise();
-        view.setListenerForAnswer(new DefaultListener());
+        view.setListenerForAnswer(new ListenerDefault());
         view.show();
     }
 

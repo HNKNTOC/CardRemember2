@@ -34,7 +34,7 @@ public class MenuItem {
         return listeners;
     }
 
-    private void addListener(DefaultListener listener) {
+    private void addListener(ListenerDefault listener) {
         this.listeners.add(listener);
     }
 }

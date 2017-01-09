@@ -10,11 +10,10 @@ import java.awt.event.ActionListener;
  * This default implements for ActionListener.
  * Displays info about event.
  */
-//TODO: rename in ListenerDefault
-public class DefaultListener implements ActionListener {
-    private final Logger LOGGER = LogManager.getLogger(DefaultListener.class);
+public class ListenerDefault implements ActionListener {
+    private final Logger LOGGER = LogManager.getLogger(ListenerDefault.class);
 
-    public DefaultListener() {
+    public ListenerDefault() {
     }
 
     @Override
