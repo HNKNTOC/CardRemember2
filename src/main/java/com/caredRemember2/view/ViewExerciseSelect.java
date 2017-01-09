@@ -16,10 +16,6 @@ public class ViewExerciseSelect extends ViewSwing {
     private ActionListener listenerForCancel = new CancelListener();
     private JList<Object> listExercise;
 
-    public void addNameExercise(String name) {
-        listNameExercise.add(name);
-    }
-
     public void setListNameExercise(List<String> listNameExercise) {
         this.listNameExercise = listNameExercise;
     }
@@ -30,6 +26,11 @@ public class ViewExerciseSelect extends ViewSwing {
 
     public void setListenerForCancel(ActionListener listenerForCancel) {
         this.listenerForCancel = listenerForCancel;
+    }
+
+    //TODO: Replaced in addNameExercise param String on Enum.
+    public void addNameExercise(String name) {
+        listNameExercise.add(name);
     }
 
     @Override
