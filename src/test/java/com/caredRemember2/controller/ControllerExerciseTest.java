@@ -9,6 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import static org.mockito.Mockito.*;
 
@@ -23,11 +24,16 @@ public class ControllerExerciseTest {
     private ViewExercise viewExercise;
     @Mock
     private Exercise.Question question;
+    @Mock
+    private Iterator<Exercise.Question> questionIterator;
 
     private void settingMock(boolean hasNextForQuestion) {
         when(question.getQuestion()).thenReturn(QUESTION);
-        when(exercise.hasNext()).thenReturn(hasNextForQuestion);
-        when(exercise.next()).thenReturn(question);
+
+        when(questionIterator.hasNext()).thenReturn(hasNextForQuestion);
+        when(questionIterator.next()).thenReturn(question);
+
+        when(exercise.getQuestionIterator()).thenReturn(questionIterator);
     }
 
     private void useController() {
@@ -38,17 +44,26 @@ public class ControllerExerciseTest {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
-    public void checkInvokeMethodExercise() throws Exception {
+    public void testCallMethodExercise() throws Exception {
         settingMock(true);
         useController();
 
-        verify(exercise).hasNext();
-        verify(exercise).next();
+        verify(exercise).getQuestionIterator();
         verify(question).getQuestion();
     }
 
     @Test
-    public void checkInvokeMethodViewExercise() throws Exception {
+    public void testCallMethodQuestionIterator() throws Exception {
+        settingMock(true);
+
+        useController();
+
+        verify(questionIterator).hasNext();
+        verify(questionIterator).next();
+    }
+
+    @Test
+    public void testCallMethodViewExercise() throws Exception {
         settingMock(true);
         useController();
 
@@ -57,7 +72,7 @@ public class ControllerExerciseTest {
     }
 
     @Test
-    public void checkWhenNoQuestions() throws Exception {
+    public void testWhenNoQuestions() throws Exception {
         settingMock(false);
         useController();
 

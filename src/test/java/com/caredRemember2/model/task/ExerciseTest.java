@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -42,8 +43,9 @@ public class ExerciseTest {
     @Test
     public void testCreateQuestions() throws Exception {
         int i = 0;
-        while (exercise.hasNext()) {
-            Exercise.Question question = exercise.next();
+        Iterator<Exercise.Question> iterator = exercise.getQuestionIterator();
+        while (iterator.hasNext()) {
+            Exercise.Question question = iterator.next();
             assertThat(question.getQuestion(), is(questionsMustBe[i]));
             assertThat(question.getAnswer(), is(nullValue()));
             assertThat(question.getIdCardWord(), is(i));
