@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This Exercise.
  */
-public class Exercise implements Model, Iterator<Exercise.Question> {
+public class Exercise implements Model {
     private static final Logger LOGGER = LogManager.getLogger(Exercise.class);
     private final static String QUESTION = "Translate ";
     private final String name;
@@ -47,6 +47,10 @@ public class Exercise implements Model, Iterator<Exercise.Question> {
         this.description = description;
     }
 
+    public Iterator<Question> getQuestionIterator() {
+        return questionIterator;
+    }
+
     /**
      * Use for get all question, to answer them and set in {@link Exercise#handlingAnswer()}.
      *
@@ -67,11 +71,11 @@ public class Exercise implements Model, Iterator<Exercise.Question> {
     }
 
     /**
-     * Handling need use after as {@link Exercise#hasNext()} return false.
+     * Handling need use after as {@link Exercise#questionIterator} hasNext() return false.
      * This method handling answer and records result.
      */
     public void handlingAnswer() {
-        if (!hasNext()) {
+        if (!questionIterator.hasNext()) {
             LOGGER.debug("handlingAnswer: go");
             for (Exercise.Question question : questions) {
                 LOGGER.debug("handlingAnswer: Answer - " + question.getAnswer());
@@ -79,21 +83,6 @@ public class Exercise implements Model, Iterator<Exercise.Question> {
         } else {
             LOGGER.fatal("handlingAnswer: Use when hasNext() not false. Need hasNext() return false.");
         }
-    }
-
-    @Override
-    public boolean hasNext() {
-        return questionIterator.hasNext();
-    }
-
-    @Override
-    public Question next() {
-        return questionIterator.next();
-    }
-
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException("remove");
     }
 
     /**

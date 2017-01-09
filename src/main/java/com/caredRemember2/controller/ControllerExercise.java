@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 /**
  * Use for control {@link Exercise} and {@link ViewExercise}
@@ -28,8 +29,10 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
 
     @Override
     void updateDataForView() {
-        if (model.hasNext()) {
-            nowQuestion = model.next();
+        Iterator<Exercise.Question> iterator = model.getQuestionIterator();
+        boolean hasNext = iterator.hasNext();
+        if (hasNext) {
+            nowQuestion = iterator.next();
             LOGGER.info("updateDataForView: Next question " + nowQuestion);
             view.setQuestion(nowQuestion.getQuestion());
             view.setListenerForAnswer(listenerForAnswer);
