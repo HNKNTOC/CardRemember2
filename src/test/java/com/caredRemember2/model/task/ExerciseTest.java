@@ -25,9 +25,9 @@ public class ExerciseTest {
     public void setUp() throws Exception {
         cardWords = new ArrayList<>();
 
-        cardWords.add(createMocKCardWord("Cat", "Кот"));
-        cardWords.add(createMocKCardWord("Dog", "Собака"));
-        cardWords.add(createMocKCardWord("Home", "Дом"));
+        cardWords.add(createMockCardWord("Cat", "Кот"));
+        cardWords.add(createMockCardWord("Dog", "Собака"));
+        cardWords.add(createMockCardWord("Home", "Дом"));
         exercise = new Exercise("Test Exception", cardWords);
     }
 
@@ -36,7 +36,6 @@ public class ExerciseTest {
     public void testInvokeMethodInCardWord() throws Exception {
         for (CardWord cardWord : cardWords) {
             verify(cardWord).getForeignWord();
-            verify(cardWord).getId();
         }
     }
 
@@ -48,7 +47,6 @@ public class ExerciseTest {
             Exercise.Question question = iterator.next();
             assertThat(question.getQuestion(), is(questionsMustBe[i]));
             assertThat(question.getAnswer(), is(nullValue()));
-            assertThat(question.getIdCardWord(), is(i));
             i++;
         }
         assertThat("In exercise must be 3 iteration.", i, is(3));
@@ -56,12 +54,28 @@ public class ExerciseTest {
 
     private int idCounter = 0;
 
-    private CardWord createMocKCardWord(String foreign, String translate) {
+    private CardWord createMockCardWord(String foreign, String translate) {
         CardWord cardWord = mock(CardWord.class);
         when(cardWord.getForeignWord()).thenReturn(foreign);
         when(cardWord.getTranslateWord()).thenReturn(translate);
         when(cardWord.getId()).thenReturn(idCounter);
         idCounter++;
         return cardWord;
+    }
+
+    @Test
+    public void testEndsAnswerOnAllQuestion() throws Exception {
+        Iterator<Exercise.Question> iterator = exercise.getQuestionIterator();
+
+        for (int i = 0; iterator.hasNext(); i++) {
+            iterator.next().setAnswer(questionsMustBe[i]);
+        }
+
+        exercise.endsAnswerOnAllQuestion();
+
+        for (int i = 0; i < cardWords.size(); i++) {
+            CardWord cardWord = cardWords.get(i);
+            verify(cardWord).sayAnswer(questionsMustBe[i]);
+        }
     }
 }

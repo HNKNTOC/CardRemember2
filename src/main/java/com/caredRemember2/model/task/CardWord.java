@@ -11,10 +11,6 @@ public class CardWord {
      */
     private static int idCounter = 0;
     /**
-     * Unique id.
-     */
-    private int id = idCounter;
-    /**
      * Word of a foreign.
      */
     private final String foreignWord;
@@ -22,11 +18,33 @@ public class CardWord {
      * Word of a translate.
      */
     private final String translateWord;
+    /**
+     * Unique id.
+     */
+    private int id = idCounter;
+    /**
+     * Use for definition bad minded word.
+     */
+    private int ratingMemorize;
 
     public CardWord(String foreignWord, String translateWord) {
         this.foreignWord = foreignWord;
         this.translateWord = translateWord;
         idCounter++;
+    }
+
+    /**
+     * Use, if to forgot word.
+     */
+    private void forgot() {
+        ratingMemorize--;
+    }
+
+    /**
+     * Use, if to remember word.
+     */
+    private void remember() {
+        ratingMemorize++;
     }
 
     public int getId() {
@@ -41,11 +59,25 @@ public class CardWord {
         return translateWord;
     }
 
+    public int getRatingMemorize() {
+        return ratingMemorize;
+    }
+
+    public void sayAnswer(String answer) {
+        if (translateWord.equals(answer)) {
+            remember();
+        } else {
+            forgot();
+        }
+    }
+
     @Override
     public String toString() {
         return "CardWord{" +
-                "foreignWord='" + foreignWord + '\'' +
+                "id=" + id +
+                ", foreignWord='" + foreignWord + '\'' +
                 ", translateWord='" + translateWord + '\'' +
+                ", ratingMemorize=" + ratingMemorize +
                 '}';
     }
 }

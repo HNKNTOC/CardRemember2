@@ -77,7 +77,7 @@ public class ControllerExerciseTest {
         useController();
 
         verify(viewExercise).close();
-        verify(exercise).handlingAnswer();
+        verify(exercise).endsAnswerOnAllQuestion();
     }
 
     @Test

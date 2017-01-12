@@ -39,7 +39,7 @@ public class ControllerExercise extends ControllerDefault<Exercise, ViewExercise
         } else {
             LOGGER.debug("updateDataForView: Model not has next question. View close.");
             view.close();
-            model.handlingAnswer();
+            model.endsAnswerOnAllQuestion();
         }
     }
 

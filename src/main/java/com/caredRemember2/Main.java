@@ -17,7 +17,7 @@ public class Main {
     private static ApplicationContext contextExercise = new ClassPathXmlApplicationContext("beans/exercise.xml");
 
     public static void main(String[] args) {
-        goMenu();
+        goExercise();
     }
 
     private static void goExercise() {
@@ -46,10 +46,10 @@ public class Main {
     }
 
     private static void goMenu() {
-        Menu menu = contextMenu.getBean("menu", Menu.class);
+        Menu model = contextMenu.getBean("menu", Menu.class);
 
         ControllerMenu controller = new ControllerMenu();
-        controller.setModel(menu);
+        controller.setModel(model);
         controller.setView(new ViewMenu());
 
         controller.update();
