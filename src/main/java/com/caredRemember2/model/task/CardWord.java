@@ -1,13 +1,26 @@
 package com.caredRemember2.model.task;
 
 /**
- * TODO: Add doc
- * Created by Nikita on 05.01.2017.
+ * Contain data about world.
+ * Set each CardWord unique {@link CardWord#id}.
  */
 public class CardWord {
+    /**
+     * Use for get unique id for CardWord.
+     * Increment when create new object CardWord.
+     */
     private static int idCounter = 0;
+    /**
+     * Unique id.
+     */
     private int id = idCounter;
+    /**
+     * Word of a foreign.
+     */
     private final String foreignWord;
+    /**
+     * Word of a translate.
+     */
     private final String translateWord;
 
     public CardWord(String foreignWord, String translateWord) {
