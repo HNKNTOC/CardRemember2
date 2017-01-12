@@ -3,6 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="aspect.xml"/>
+
     <bean name="exercise" class="com.caredRemember2.model.task.Exercise"
           c:name="Exercise 1"/>
 
