@@ -37,4 +37,11 @@ public class MenuItem {
     private void addListener(ListenerDefault listener) {
         this.listeners.add(listener);
     }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
