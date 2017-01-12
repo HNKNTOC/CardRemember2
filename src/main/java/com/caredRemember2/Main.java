@@ -17,7 +17,7 @@ public class Main {
     private static ApplicationContext contextExercise = new ClassPathXmlApplicationContext("beans/exercise.xml");
 
     public static void main(String[] args) {
-        goExercise();
+        goMenu();
     }
 
     private static void goExercise() {
